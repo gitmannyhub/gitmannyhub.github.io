@@ -121,6 +121,14 @@
             padding-bottom: 4rem;
         }
 
+        .hero-inner {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 4rem;
+            align-items: center;
+            width: 100%;
+        }
+
         .hero-content { width: 100%; }
 
         .hero-tag {
@@ -136,7 +144,7 @@
         }
 
         .hero h1 {
-            font-size: 3.8rem;
+            font-size: 3.6rem;
             font-weight: 800;
             color: var(--text-primary);
             line-height: 1.15;
@@ -163,50 +171,36 @@
             margin-bottom: 2rem;
             line-height: 1.9;
             text-align: justify;
-            max-width: 900px;
         }
 
-        .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            margin-bottom: 2rem;
-            max-width: 900px;
-        }
-
-        .stat-card {
+        .hero-stat-single {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1rem 1.2rem;
-            transition: transform 0.2s;
+            border-top: 4px solid var(--blue);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            min-width: 180px;
+            text-align: center;
         }
 
-        .stat-card:hover { transform: translateY(-3px); }
-
-        .stat-card:nth-child(1) { border-top: 3px solid var(--blue); }
-        .stat-card:nth-child(2) { border-top: 3px solid var(--green); }
-        .stat-card:nth-child(3) { border-top: 3px solid var(--teal); }
-        .stat-card:nth-child(4) { border-top: 3px solid var(--orange); }
-
-        .stat-number {
-            font-size: 1.6rem;
+        .hero-stat-single .stat-number {
+            font-size: 3rem;
             font-weight: 800;
+            color: var(--blue);
             display: block;
-            line-height: 1.2;
+            line-height: 1.1;
         }
 
-        .stat-card:nth-child(1) .stat-number { color: var(--blue); }
-        .stat-card:nth-child(2) .stat-number { color: var(--green); }
-        .stat-card:nth-child(3) .stat-number { color: var(--teal); }
-        .stat-card:nth-child(4) .stat-number { color: var(--orange); }
-
-        .stat-label {
-            font-size: 0.74rem;
+        .hero-stat-single .stat-label {
+            font-size: 0.78rem;
             color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 0.8px;
-            margin-top: 0.2rem;
+            letter-spacing: 1px;
+            margin-top: 0.4rem;
             display: block;
         }
 
@@ -267,11 +261,11 @@
             border-radius: 2px;
         }
 
-        #skills     .section-label   { color: var(--blue); }
-        #skills     .section-divider { background: linear-gradient(90deg, var(--blue), var(--teal)); }
+        #projects   .section-label   { color: var(--blue); }
+        #projects   .section-divider { background: linear-gradient(90deg, var(--blue), var(--teal)); }
 
-        #projects   .section-label   { color: var(--teal); }
-        #projects   .section-divider { background: linear-gradient(90deg, var(--teal), var(--blue)); }
+        #skills     .section-label   { color: var(--teal); }
+        #skills     .section-divider { background: linear-gradient(90deg, var(--teal), var(--blue)); }
 
         #experience .section-label   { color: var(--green); }
         #experience .section-divider { background: linear-gradient(90deg, var(--green), var(--teal)); }
@@ -281,55 +275,6 @@
 
         #contact    .section-label   { color: var(--blue); }
         #contact    .section-divider { background: linear-gradient(90deg, var(--blue), var(--teal)); }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.2rem;
-        }
-
-        .skill-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1.3rem;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-        }
-
-        .skill-card:nth-child(1) { border-left: 4px solid var(--blue); }
-        .skill-card:nth-child(2) { border-left: 4px solid var(--teal); }
-        .skill-card:nth-child(3) { border-left: 4px solid var(--green); }
-        .skill-card:nth-child(4) { border-left: 4px solid var(--orange); }
-
-        .skill-card:nth-child(1) h4 { color: var(--blue); }
-        .skill-card:nth-child(2) h4 { color: var(--teal); }
-        .skill-card:nth-child(3) h4 { color: var(--green); }
-        .skill-card:nth-child(4) h4 { color: var(--orange); }
-
-        .skill-card h4 {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.9rem;
-            font-weight: 700;
-        }
-
-        .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-
-        .skill-tag {
-            background: var(--bg-tag);
-            border: 1px solid var(--border);
-            color: var(--text-body);
-            padding: 0.25rem 0.65rem;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
 
         .projects-grid {
             display: grid;
@@ -436,6 +381,55 @@
             border-color: var(--border);
             cursor: default;
             pointer-events: none;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.2rem;
+        }
+
+        .skill-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.3rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .skill-card:nth-child(1) { border-left: 4px solid var(--blue); }
+        .skill-card:nth-child(2) { border-left: 4px solid var(--teal); }
+        .skill-card:nth-child(3) { border-left: 4px solid var(--green); }
+        .skill-card:nth-child(4) { border-left: 4px solid var(--orange); }
+
+        .skill-card:nth-child(1) h4 { color: var(--blue); }
+        .skill-card:nth-child(2) h4 { color: var(--teal); }
+        .skill-card:nth-child(3) h4 { color: var(--green); }
+        .skill-card:nth-child(4) h4 { color: var(--orange); }
+
+        .skill-card h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.9rem;
+            font-weight: 700;
+        }
+
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+        .skill-tag {
+            background: var(--bg-tag);
+            border: 1px solid var(--border);
+            color: var(--text-body);
+            padding: 0.25rem 0.65rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
         }
 
         .experience-timeline {
@@ -690,7 +684,8 @@
         @media (max-width: 900px) {
             nav ul { display: none; }
             .hero h1 { font-size: 2.4rem; }
-            .hero-stats { grid-template-columns: repeat(2, 1fr); }
+            .hero-inner { grid-template-columns: 1fr; }
+            .hero-stat-single { display: none; }
             .skills-grid { grid-template-columns: repeat(2, 1fr); }
             .projects-grid { grid-template-columns: 1fr; }
             .contact-grid { grid-template-columns: repeat(2, 1fr); }
@@ -707,8 +702,8 @@
     <div class="nav-right">
         <ul>
             <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
             <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#education">Education</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -720,42 +715,32 @@
     </div>
 </nav>
 
+<!-- ── HERO ── -->
 <div class="wrapper">
     <div class="hero" id="about">
-        <div class="hero-content">
-            <div class="hero-tag">📍 Manchester, UK &nbsp;|&nbsp; Open to Work</div>
-            <h1>Manikandan Sankaran</h1>
-            <p class="hero-mba">MBA · British &amp; Irish Citizen</p>
-            <p class="hero-title">Senior Data &amp; Business Analyst &nbsp;|&nbsp; SQL · Python · AI Pipeline Automation · Supply Chain &amp; Operations Analytics</p>
-            <p class="hero-summary">
-                Over 15 years in global Operations, including 5+ years building data solutions across Contact Centre
-                and Supply Chain domains. I build things that actually get used: pipelines, dashboards, automation tools,
-                and I write the SQL and Python myself. My most recent project was a fully automated end-to-end pipeline
-                from Snowflake SQL through to AI analysis, generating an HTML report to stakeholder inboxes with zero
-                manual steps, saving around 150 hours a year.
-            </p>
-            <div class="hero-stats">
-                <div class="stat-card">
-                    <span class="stat-number">15+</span>
-                    <span class="stat-label">Years Experience</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">4.7→0.25h</span>
-                    <span class="stat-label">MTTR Reduced</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">21</span>
-                    <span class="stat-label">Dashboards Built</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">624hrs</span>
-                    <span class="stat-label">Saved Per Year</span>
+        <div class="hero-inner">
+            <div class="hero-content">
+                <div class="hero-tag">📍 Manchester, UK &nbsp;|&nbsp; Open to Work</div>
+                <h1>Manikandan Sankaran</h1>
+                <p class="hero-mba">MBA · British &amp; Irish Citizen</p>
+                <p class="hero-title">Senior Data &amp; Business Analyst &nbsp;|&nbsp; SQL · Python · AI Pipeline Automation · Supply Chain &amp; Operations Analytics</p>
+                <p class="hero-summary">
+                    I build things that actually get used: pipelines, dashboards and automation tools, and I write the SQL and Python myself.
+                    My reporting work has had real, measurable outcomes including cutting mean resolution time from 4.7 hours to 0.25 hours
+                    across 21 Tableau dashboards spanning 80+ global vendor sites. My most recent project was a fully automated
+                    end-to-end pipeline from Snowflake SQL through to AI analysis, generating an HTML report delivered directly to
+                    stakeholder inboxes with zero manual steps, saving 624 hours of manual effort a year. I am equally comfortable
+                    building the technical infrastructure and presenting the findings to senior leadership.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn-primary">View Projects</a>
+                    <a href="https://www.linkedin.com/in/manikandan-s-135aa3382/" target="_blank" class="btn-outline btn-linkedin">LinkedIn</a>
+                    <a href="https://github.com/gitmannyhub" target="_blank" class="btn-outline btn-github">GitHub</a>
                 </div>
             </div>
-            <div class="hero-buttons">
-                <a href="#projects" class="btn-primary">View Projects</a>
-                <a href="https://www.linkedin.com/in/manikandan-s-135aa3382/" target="_blank" class="btn-outline btn-linkedin">LinkedIn</a>
-                <a href="https://github.com/gitmannyhub" target="_blank" class="btn-outline btn-github">GitHub</a>
+            <div class="hero-stat-single">
+                <span class="stat-number">15+</span>
+                <span class="stat-label">Years Experience</span>
             </div>
         </div>
     </div>
@@ -763,6 +748,94 @@
 
 <hr class="section-sep">
 
+<!-- ── PROJECTS ── -->
+<div class="wrapper">
+    <section id="projects">
+        <p class="section-label">What I've Built</p>
+        <h2 class="section-title">Projects</h2>
+        <div class="section-divider"></div>
+        <div class="projects-grid">
+
+            <div class="project-card">
+                <span class="project-badge badge-live">Live Project</span>
+                <h3>Supermarket OOS Analytics Dashboard</h3>
+                <p>
+                    Built as part of technical interview prep for a retail AI company. Loaded a real MySQL database,
+                    explored 7 tables and built a 9-tab Streamlit dashboard from scratch covering OOS duration, lost revenue
+                    estimation, chronic OOS detection, user performance, resolution analysis and inventory reconstruction.
+                    All SQL written from scratch. Converted to SQLite for public deployment.
+                </p>
+                <div class="project-stack">
+                    <span class="stack-tag">Python</span>
+                    <span class="stack-tag">MySQL</span>
+                    <span class="stack-tag">SQLite</span>
+                    <span class="stack-tag">Streamlit</span>
+                    <span class="stack-tag">Plotly</span>
+                    <span class="stack-tag">Pandas</span>
+                    <span class="stack-tag">GitHub</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://supermarket-oos-dashboard-fmrafejmfvhmqpc7x7g2bo.streamlit.app" target="_blank" class="project-link link-blue">Live App</a>
+                    <a href="https://github.com/gitmannyhub/focal-oos-dashboard" target="_blank" class="project-link link-teal">GitHub</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <span class="project-badge badge-internal">Apple Internal</span>
+                <h3>OEM Priority PO Analysis Pipeline</h3>
+                <p>
+                    Built to give the SSCO EMEA team early visibility into keyboard PO backlog before it compounds
+                    into a cost problem. A fully cloud-based Python script runs every Monday on Kubernetes with zero
+                    manual steps from data pull to inbox. Joins 3 Snowflake tables (~4,500 rows), applies
+                    Pull/Push/Shortfall logic, feeds computed stats into Gemini Flash for a colour-coded action summary,
+                    and auto-generates a 5-sheet Excel and 7-slide HTML report delivered to stakeholders automatically.
+                    Saves 624 hours per year.
+                </p>
+                <div class="project-stack">
+                    <span class="stack-tag">Python</span>
+                    <span class="stack-tag">Snowflake SQL</span>
+                    <span class="stack-tag">Anthropic Claude</span>
+                    <span class="stack-tag">Gemini Flash</span>
+                    <span class="stack-tag">Excel</span>
+                    <span class="stack-tag">Box API</span>
+                    <span class="stack-tag">SMTP</span>
+                    <span class="stack-tag">Kubernetes</span>
+                </div>
+                <div class="project-links">
+                    <a class="project-link disabled">Internal / NDA</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <span class="project-badge badge-internal">Apple Internal</span>
+                <h3>Global Contact Centre Analytics Infrastructure</h3>
+                <p>
+                    Built 21 Tableau dashboards (13 SQL-based data sources) covering 80+ vendor sites, 50,000+
+                    advisors and 300 queues globally. Each had anomaly detection alarming built in, cutting MTTR from
+                    4.7 hours to 0.25 hours. Included network disconnect detection, IVR anomaly alarming, outbound
+                    call health and queue performance monitoring. The team had independent visibility before sites
+                    even knew something was wrong.
+                </p>
+                <div class="project-stack">
+                    <span class="stack-tag">Tableau</span>
+                    <span class="stack-tag">SQL</span>
+                    <span class="stack-tag">SPLUNK</span>
+                    <span class="stack-tag">Grafana</span>
+                    <span class="stack-tag">ServiceNow</span>
+                    <span class="stack-tag">Excel</span>
+                </div>
+                <div class="project-links">
+                    <a class="project-link disabled">Internal / NDA</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</div>
+
+<hr class="section-sep">
+
+<!-- ── SKILLS ── -->
 <div class="wrapper">
     <section id="skills">
         <p class="section-label">What I Work With</p>
@@ -817,8 +890,15 @@
                     <span class="skill-tag">Supply Demand Planning</span>
                     <span class="skill-tag">Procurement Analytics</span>
                     <span class="skill-tag">Contact Centre Ops</span>
-                    <span class="skill-tag">ITSM / ITIL</span>
-                    <span class="skill-tag">Incident Management</span>
+                    <span class="skill-tag">Major Incident Management (P1/P2)</span>
+                    <span class="skill-tag">Problem Management</span>
+                    <span class="skill-tag">Post Incident Reviews</span>
+                    <span class="skill-tag">Root Cause Analysis</span>
+                    <span class="skill-tag">Incident Lifecycle Management</span>
+                    <span class="skill-tag">Service Restoration</span>
+                    <span class="skill-tag">Operational Risk Management</span>
+                    <span class="skill-tag">ITSM / ITOM (ITIL aligned)</span>
+                    <span class="skill-tag">Project Management</span>
                     <span class="skill-tag">APIs</span>
                     <span class="skill-tag">UAT</span>
                 </div>
@@ -829,91 +909,7 @@
 
 <hr class="section-sep">
 
-<div class="wrapper">
-    <section id="projects">
-        <p class="section-label">What I've Built</p>
-        <h2 class="section-title">Projects</h2>
-        <div class="section-divider"></div>
-        <div class="projects-grid">
-
-            <div class="project-card">
-                <span class="project-badge badge-live">Live Project</span>
-                <h3>Supermarket OOS Analytics Dashboard</h3>
-                <p>
-                    Built as part of technical interview prep for a retail AI company. Loaded a real MySQL database,
-                    explored 7 tables and built a 9-tab Streamlit dashboard from scratch covering OOS duration, lost revenue
-                    estimation, chronic OOS detection, user performance, resolution analysis and inventory reconstruction.
-                    All SQL written from scratch. Converted to SQLite for public deployment.
-                </p>
-                <div class="project-stack">
-                    <span class="stack-tag">Python</span>
-                    <span class="stack-tag">MySQL</span>
-                    <span class="stack-tag">SQLite</span>
-                    <span class="stack-tag">Streamlit</span>
-                    <span class="stack-tag">Plotly</span>
-                    <span class="stack-tag">Pandas</span>
-                    <span class="stack-tag">GitHub</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://supermarket-oos-dashboard-fmrafejmfvhmqpc7x7g2bo.streamlit.app" target="_blank" class="project-link link-blue">Live App</a>
-                    <a href="https://github.com/gitmannyhub/focal-oos-dashboard" target="_blank" class="project-link link-teal">GitHub</a>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <span class="project-badge badge-internal">Apple Internal</span>
-                <h3>OEM Priority PO Analysis Pipeline</h3>
-                <p>
-                    Built to give the SSCO EMEA team early visibility into keyboard PO backlog before it compounds
-                    into a cost problem. Fully cloud-based Python on Kubernetes with zero manual steps from data pull
-                    to inbox. Joins 3 Snowflake tables (~4,500 rows), applies Pull/Push/Shortfall logic, feeds stats
-                    to AI for a colour-coded action summary, and delivers Excel + 7-slide HTML report automatically.
-                    Saves 624 hours per year.
-                </p>
-                <div class="project-stack">
-                    <span class="stack-tag">Python</span>
-                    <span class="stack-tag">Snowflake SQL</span>
-                    <span class="stack-tag">Anthropic Claude</span>
-                    <span class="stack-tag">Gemini Flash</span>
-                    <span class="stack-tag">Excel</span>
-                    <span class="stack-tag">Box API</span>
-                    <span class="stack-tag">SMTP</span>
-                    <span class="stack-tag">Kubernetes</span>
-                </div>
-                <div class="project-links">
-                    <a class="project-link disabled">Internal / NDA</a>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <span class="project-badge badge-internal">Apple Internal</span>
-                <h3>Global Contact Centre Analytics Infrastructure</h3>
-                <p>
-                    Built 21 Tableau dashboards (13 SQL-based data sources) covering 80+ vendor sites, 50,000+
-                    advisors and 300 queues globally. Each had anomaly detection alarming built in, cutting MTTR from
-                    4.7 hours to 0.25 hours. Included network disconnect detection, IVR anomaly alarming, outbound
-                    call health and queue performance monitoring. The team had independent visibility before sites
-                    even knew something was wrong.
-                </p>
-                <div class="project-stack">
-                    <span class="stack-tag">Tableau</span>
-                    <span class="stack-tag">SQL</span>
-                    <span class="stack-tag">SPLUNK</span>
-                    <span class="stack-tag">Grafana</span>
-                    <span class="stack-tag">ServiceNow</span>
-                    <span class="stack-tag">Excel</span>
-                </div>
-                <div class="project-links">
-                    <a class="project-link disabled">Internal / NDA</a>
-                </div>
-            </div>
-
-        </div>
-    </section>
-</div>
-
-<hr class="section-sep">
-
+<!-- ── EXPERIENCE ── -->
 <div class="wrapper">
     <section id="experience">
         <p class="section-label">Where I've Worked</p>
@@ -930,16 +926,15 @@
                 <p class="exp-subtitle">Supply Demand Planning · Procurement Analytics · Data Engineering · Automation</p>
                 <p class="exp-desc">
                     Managing supply demand planning for keyboards (13,000+ SKUs) across EMEIA for the Mac/iMac product line.
-                    Day to day involves weekly supply planning, backlog tracking, fill rate, inventory turnover, master data
-                    management and resolving exceptions with OEM sites and distribution centres. Between December 2024 and
-                    May 2025, also covered a buyer role covering PO execution, expediting, new buy setup and global supplier coordination.
+                    Day to day work covers weekly supply planning, backlog tracking, fill rate, inventory turnover and master
+                    data management, resolving exceptions with OEM manufacturing sites and distribution centres.
+                    Between December 2024 and May 2025, also covered a buyer role covering PO execution, expediting,
+                    new buy supply chain setup and global supplier coordination.
                 </p>
                 <ul class="exp-bullets">
-                    <li>Built an end-to-end automated pipeline from Snowflake to AI summary to Excel and HTML report to inbox with <strong>zero manual steps</strong></li>
-                    <li>Pull/Push/Shortfall logic rebalances OEM capacity weekly, surfacing CRU escalation risk before it compounds</li>
-                    <li>Built Open PO Book Tableau dashboard cutting manual data prep by <strong>60%</strong></li>
-                    <li>Built Shipment Exceptions dashboard with Z-Score outlier detection and automated Slack and email alerts</li>
-                    <li>Delivered cost analysis showing only 2% of ASN transactions affected, <strong>avoiding unnecessary process changes</strong></li>
+                    <li>Built Open PO Book Tableau dashboard integrating in-transit and demand forecast data, cutting manual data prep time by <strong>60%</strong></li>
+                    <li>Built Shipment Exceptions dashboard using Z-Score outlier detection with automated Slack and email alerts, helping teams catch aging POs early</li>
+                    <li>Delivered a senior management cost analysis on multi Advance Shipping Notification transactions, showing only <strong>2% of transactions were affected</strong> and total processing cost was under $170K globally, putting the concern in proportion and avoiding unnecessary process changes</li>
                 </ul>
             </div>
 
@@ -951,17 +946,18 @@
                 <p class="exp-company">Apple (Ireland) | AppleCare Global Contact Delivery Support</p>
                 <p class="exp-subtitle">Data Analytics · Business Intelligence · ITIL Major Incident &amp; Problem Management</p>
                 <p class="exp-desc">
-                    Global role covering contact centre performance across 10+ internal sites, 80+ vendor sites, 50,000+
-                    advisors and 300 queues spanning EMEIA, JAPAC and AMR. The team was relying on sites to report issues.
-                    I built the infrastructure that changed that.
+                    Global role covering contact centre performance and analytics across 10+ internal sites, 80+ vendor sites,
+                    50,000+ advisors and 300 queues spanning EMEIA, JAPAC and AMR. Also held full P1/P2 Major Incident
+                    Management responsibility, running incident bridges, Post Incident Reviews and Root Cause Analysis
+                    with resolver teams. The team was relying on sites to report issues. I built the infrastructure that changed that.
                 </p>
                 <ul class="exp-bullets">
-                    <li>Built 21 Tableau dashboards with anomaly detection, cutting MTTR from <strong>4.7 hours to 0.25 hours</strong></li>
-                    <li>Chat Disconnect dashboard resolved connectivity issues across <strong>32 sites and 72 advisors globally</strong></li>
-                    <li>Outbound Call Health dashboard found <strong>46% of calls (~3,000/week) were failing</strong>, identified and resolved for New Zealand</li>
-                    <li>IVR Anomaly Dashboard caught a call drop issue in Indonesia at 10-16% daily impact (60-72 calls/day)</li>
-                    <li>Cut queue performance management time by <strong>90%</strong> with real-time forecast data</li>
-                    <li>VTO dashboard saw hours posted increase by <strong>1,355%</strong> and hours taken up by <strong>7,184%</strong></li>
+                    <li>Built 21 Tableau dashboards (13 SQL-based data sources) with anomaly detection alarming, cutting MTTR from <strong>4.7 hours to 0.25 hours</strong></li>
+                    <li>Advisor Network Chat Disconnect dashboard found and resolved connectivity issues across <strong>32 sites and 72 advisors globally</strong>, and flagged incorrect transcripts affecting thousands of chat interactions daily</li>
+                    <li>Outbound Call Health dashboard found <strong>46% of outbound calls (~3,000 per week) were failing</strong> due to carriers blocking Apple numbers, identified and resolved for New Zealand</li>
+                    <li>IVR Anomaly Dashboard caught a call drop issue in Indonesia at <strong>10 to 16% daily impact</strong> (60 to 72 calls per day)</li>
+                    <li>Cut queue performance management time by <strong>90%</strong> by building real-time forecast data into daily reports</li>
+                    <li>VTO dashboard saw hours posted increase by <strong>1,355%</strong> and hours taken increase by <strong>7,184%</strong> year on year</li>
                 </ul>
             </div>
 
@@ -971,10 +967,13 @@
                     <span class="exp-period">Mar 2022 to Sep 2022</span>
                 </div>
                 <p class="exp-company">Apple (Ireland) | AppleCare Support Operations · Business Intelligence</p>
+                <p class="exp-desc">
+                    Provided global analytics support for AppleCare Contact Centre and Channel Support functions,
+                    covering development, support and maintenance of business analytics Tableau dashboards.
+                </p>
                 <ul class="exp-bullets">
-                    <li>Global analytics support for AppleCare Contact Centre and Channel Support functions</li>
-                    <li>Integrated Customer Satisfaction into Case AHT Tableau report for EMEA Leadership</li>
-                    <li>Built JAPAC metric report analysing Apple Maps contact drivers for strategic decision making</li>
+                    <li>Integrated Customer Satisfaction into the Case Average Handling Time Tableau report for EMEA Leadership</li>
+                    <li>Built JAPAC metric report analysing Apple Maps contact drivers, giving management actionable trends for strategic decision making</li>
                 </ul>
             </div>
 
@@ -984,6 +983,14 @@
                     <span class="exp-period">Aug 2017 to Dec 2019</span>
                 </div>
                 <p class="exp-company">Apple (Ireland) | EMEA Retail Contact Centre</p>
+                <p class="exp-desc">
+                    Front line customer service and technical support for Apple retail customers across EMEIA.
+                    Progressed to Senior Advisor level before moving into analytics and operations roles.
+                </p>
+                <ul class="exp-bullets">
+                    <li>Built Excel dashboards for the UK Retail Contact Centre Team covering FCR, Customer Satisfaction and Internal Survey reporting, reducing reporting time by <strong>98%</strong> (from roughly an hour down to under a minute)</li>
+                    <li>Winner of the <strong>Enriching Lives award</strong> at the EMEIA Retail Contact Centre Recognition Awards Q2 2018, recognising the impact on customers and colleagues</li>
+                </ul>
             </div>
 
             <div class="exp-item">
@@ -992,7 +999,10 @@
                     <span class="exp-period">2004 to 2017</span>
                 </div>
                 <p class="exp-company">Dell (2004 to 2007) | Various customer-facing roles (2007 to 2017)</p>
-                <p class="exp-desc">Full career history available upon request.</p>
+                <p class="exp-desc">
+                    Started career in technical support at Dell before moving through a series of customer-facing
+                    operations and management roles. Full career history available upon request.
+                </p>
             </div>
 
         </div>
@@ -1001,6 +1011,7 @@
 
 <hr class="section-sep">
 
+<!-- ── EDUCATION ── -->
 <div class="wrapper">
     <section id="education">
         <p class="section-label">Academic Background</p>
@@ -1056,6 +1067,7 @@
 
 <hr class="section-sep">
 
+<!-- ── CONTACT ── -->
 <div class="wrapper">
     <section id="contact">
         <p class="section-label">Get In Touch</p>
@@ -1086,6 +1098,7 @@
     </section>
 </div>
 
+<!-- ── FOOTER ── -->
 <footer>
     <p class="footer-text">
         Manikandan Sankaran &nbsp;·&nbsp; Senior Data &amp; Business Analyst &nbsp;·&nbsp; Manchester, UK
